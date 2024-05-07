@@ -56,4 +56,6 @@ dependencies {
     implementation ("androidx.media:media:1.5.0")
     implementation ("com.google.android.exoplayer:exoplayer:2.17.0")
     implementation ("com.google.android.exoplayer:extension-mediasession:2.17.0")
+    //Coroutine
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
 }

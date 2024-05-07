@@ -4,6 +4,7 @@ import android.media.browse.MediaBrowser
 import android.os.Bundle
 import android.service.media.MediaBrowserService
 import android.support.v4.media.MediaBrowserCompat
+import android.support.v4.media.session.MediaSessionCompat
 import androidx.media.MediaBrowserServiceCompat
 import com.example.mediaplayer.media.constants.AudioContanst
 import com.google.android.exoplayer2.ExoPlayer
@@ -11,6 +12,11 @@ import com.google.android.exoplayer2.source.hls.DefaultHlsDataSourceFactory
 import com.google.android.exoplayer2.upstream.cache.CacheDataSource
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
+import com.example.mediaplayer.media.exoplayer.MediaSource
+import com.google.android.exoplayer2.ext.mediasession.MediaSessionConnector
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
 
 @AndroidEntryPoint
 class MediaPlayerService : MediaBrowserServiceCompat() {
@@ -22,6 +28,12 @@ class MediaPlayerService : MediaBrowserServiceCompat() {
 
     @Inject
     lateinit var mediaSource : MediaSource
+
+    private var serviceJob = SupervisorJob()
+    private var serviceScope = CoroutineScope(Dispatchers.Main + serviceJob)
+
+    private lateinit var mediaSession:MediaSessionCompat
+    private lateinit var mediaSessionConnector: MediaSessionConnector
 
     @Inject
     override fun onGetRoot(
