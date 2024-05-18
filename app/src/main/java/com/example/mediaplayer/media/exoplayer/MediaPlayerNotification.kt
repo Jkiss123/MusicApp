@@ -40,12 +40,13 @@ internal class MediaPlayerNotification (
             setUseRewindAction(false)
             setUseFastForwardAction(false)
         }
-        fun hideNofitication(){
-            notificationManager.setPlayer(null)
-        }
-        fun showNotification(player:Player){
-            notificationManager.setPlayer(player)
-        }
+
+    }
+    fun hideNofitication(){
+        notificationManager.setPlayer(null)
+    }
+    fun showNotification(player:Player){
+        notificationManager.setPlayer(player)
     }
     inner class  DescriptionAdapter(private val controller:MediaControllerCompat) : PlayerNotificationManager.MediaDescriptionAdapter{
         override fun getCurrentContentTitle(player: Player): CharSequence = controller.metadata.description.title.toString()
