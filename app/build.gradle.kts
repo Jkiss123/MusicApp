@@ -19,6 +19,9 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
+    buildFeatures{
+        viewBinding = true
+    }
 
     buildTypes {
         release {
@@ -58,4 +61,15 @@ dependencies {
     implementation ("com.google.android.exoplayer:extension-mediasession:2.17.0")
     //Coroutine
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0")
+
+    // Navigation
+    val navVersion = "2.7.5"
+    implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
+    implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
+
+}
+
+kapt {
+    correctErrorTypes = true
 }

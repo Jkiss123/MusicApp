@@ -89,7 +89,7 @@ class MediaPlayerService : MediaBrowserServiceCompat() {
         mediaPlayerNotificationManager.showNotification(exoPlayer)
     }
 
-    @Inject
+
     override fun onGetRoot(
         clientPackageName: String,
         clientUid: Int,
